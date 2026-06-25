@@ -3,686 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PHOTOSIA — TOP Page Design (Figma Import)</title>
+<title>PHOTOSIA — プロフェッショナル物件撮影サービス</title>
 
-<!-- ============================================================
-  PHOTOSIA Design System — Figma Import File
-  Version: 6.0 (2026)
-  
-  【Figmaへの取り込み方法】
-  1. Figmaを開き、プラグイン検索で「HTML to Figma」または
-     「Figma HTML」プラグインをインストール
-  2. このHTMLファイルをブラウザで開く
-  3. プラグインのURLフィールドにlocalhostのURLを入力、
-     またはHTMLソースをそのまま貼り付け
-  
-  【推奨プラグイン】
-  - "HTML to Figma" by Builder.io (最も高精度)
-  - "HtmlToDesign" by Victor Matias
-============================================================ -->
-
-<style>
-  /* ==========================================
-     DESIGN TOKENS — PHOTOSIA Design System
-  ========================================== */
-  :root {
-    /* --- Color Palette --- */
-    --color-black:       #0A0A0A;
-    --color-white:       #FFFFFF;
-    --color-off-white:   #F5F5F3;
-    --color-gray-100:    #ECECEA;
-    --color-gray-200:    #D4D4D0;
-    --color-gray-400:    #9A9A94;
-    --color-gray-600:    #5C5C58;
-    --color-gray-800:    #2A2A28;
-    --color-accent:      #C8A96E;   /* Warm Gold — Primary Accent */
-    --color-accent-dark: #A8893E;
-    --color-overlay:     rgba(10, 10, 10, 0.52);
-
-    /* --- Typography --- */
-    --font-en:   'Cormorant Garamond', 'Times New Roman', Georgia, serif;
-    --font-ja:   'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
-    --font-mono: 'Courier New', monospace;
-    --font-sans: 'Helvetica Neue', Arial, sans-serif;
-
-    /* --- Type Scale --- */
-    --text-hero:   clamp(52px, 7vw, 88px);
-    --text-h1:     clamp(36px, 5vw, 56px);
-    --text-h2:     clamp(28px, 4vw, 40px);
-    --text-h3:     22px;
-    --text-body-lg: 18px;
-    --text-body:    16px;
-    --text-caption: 13px;
-    --text-label:   11px;
-
-    /* --- Spacing --- */
-    --space-xs:   8px;
-    --space-sm:   16px;
-    --space-md:   32px;
-    --space-lg:   64px;
-    --space-xl:   96px;
-    --space-2xl:  160px;
-
-    /* --- Border Radius --- */
-    --radius-sm:  2px;
-    --radius-md:  6px;
-
-    /* --- Transitions --- */
-    --ease:        cubic-bezier(0.22, 1, 0.36, 1);
-    --duration:    0.6s;
-  }
-
-  /* ==========================================
-     RESET & BASE
-  ========================================== */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 16px; scroll-behavior: smooth; }
-  body {
-    background: var(--color-black);
-    color: var(--color-white);
-    font-family: var(--font-ja);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-  img { display: block; max-width: 100%; }
-  a { color: inherit; text-decoration: none; }
-
-  /* ==========================================
-     TYPOGRAPHY STYLES
-  ========================================== */
-  .t-eyebrow {
-    font-family: var(--font-en);
-    font-size: var(--text-label);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-gray-400);
-  }
-  .t-hero {
-    font-family: var(--font-en);
-    font-size: var(--text-hero);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-  }
-  .t-h1 {
-    font-family: var(--font-ja);
-    font-size: var(--text-h1);
-    font-weight: 500;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-  }
-  .t-h2 {
-    font-family: var(--font-en);
-    font-size: var(--text-h2);
-    font-weight: 300;
-    letter-spacing: 0.02em;
-  }
-  .t-h2-ja {
-    font-family: var(--font-ja);
-    font-size: var(--text-h2);
-    font-weight: 500;
-    line-height: 1.35;
-  }
-  .t-body { font-size: var(--text-body); color: var(--color-gray-400); line-height: 1.8; }
-  .t-caption { font-family: var(--font-en); font-size: var(--text-caption); letter-spacing: 0.1em; color: var(--color-gray-600); }
-  .accent { font-style: italic; color: var(--color-accent); }
-
-  /* ==========================================
-     LAYOUT UTILITIES
-  ========================================== */
-  .container { max-width: 1280px; margin: 0 auto; padding: 0 var(--space-lg); }
-  .section { padding: var(--space-2xl) 0; }
-  .divider {
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--color-gray-600), transparent);
-  }
-  .rule { width: 100%; height: 1px; background: var(--color-gray-800); }
-
-  /* ==========================================
-     NAVIGATION
-  ========================================== */
-  .nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 28px var(--space-lg);
-    background: transparent;
-  }
-  .nav-logo {
-    font-family: var(--font-en);
-    font-size: 22px;
-    font-weight: 400;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-white);
-  }
-  .nav-links {
-    display: flex;
-    gap: var(--space-md);
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: var(--font-en);
-    font-size: var(--text-label);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-gray-400);
-    transition: color var(--duration) var(--ease);
-  }
-  .nav-links a:hover { color: var(--color-white); }
-
-  /* ==========================================
-     HERO SECTION
-  ========================================== */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: 
-      linear-gradient(to right, rgba(10,10,10,0.85) 40%, rgba(10,10,10,0.2) 100%),
-      linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);
-    background-color: var(--color-gray-800);
-  }
-  /* 実際の実装では背景に物件写真が入る */
-  .hero-bg-photo {
-    position: absolute;
-    inset: 0;
-    background: #1a1a1a; /* placeholder */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .hero-bg-photo::after {
-    content: '[ 物件写真 背景 ]';
-    font-family: var(--font-en);
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    color: var(--color-gray-600);
-  }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 var(--space-lg) var(--space-xl);
-    max-width: 900px;
-  }
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-md);
-  }
-  .hero-eyebrow-line {
-    width: 48px;
-    height: 1px;
-    background: var(--color-accent);
-  }
-  .hero-headline {
-    font-family: var(--font-ja);
-    font-size: clamp(44px, 6.5vw, 80px);
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    margin-bottom: var(--space-md);
-  }
-  .hero-headline em {
-    font-style: italic;
-    color: var(--color-accent);
-    font-family: var(--font-en);
-  }
-  .hero-sub {
-    font-size: var(--text-body-lg);
-    color: var(--color-gray-400);
-    line-height: 1.7;
-    margin-bottom: var(--space-lg);
-    max-width: 540px;
-  }
-  .hero-cta {
-    display: flex;
-    gap: var(--space-sm);
-    align-items: center;
-  }
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 36px;
-    background: var(--color-accent);
-    color: var(--color-black);
-    font-family: var(--font-en);
-    font-size: var(--text-label);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: background var(--duration) var(--ease);
-  }
-  .btn-primary:hover { background: var(--color-accent-dark); }
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 36px;
-    border: 1px solid var(--color-gray-600);
-    color: var(--color-white);
-    font-family: var(--font-en);
-    font-size: var(--text-label);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
-  }
-  .btn-ghost:hover { border-color: var(--color-white); }
-  .hero-scroll {
-    position: absolute;
-    bottom: var(--space-lg);
-    right: var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    z-index: 2;
-  }
-  .hero-scroll-text {
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-gray-600);
-    writing-mode: vertical-rl;
-  }
-  .hero-scroll-line {
-    width: 1px;
-    height: 64px;
-    background: linear-gradient(to bottom, var(--color-gray-600), transparent);
-  }
-
-  /* ==========================================
-     NUMBERS / STATS SECTION
-  ========================================== */
-  .numbers {
-    padding: var(--space-xl) 0;
-    border-top: 1px solid var(--color-gray-800);
-    border-bottom: 1px solid var(--color-gray-800);
-  }
-  .numbers-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-  }
-  .number-item {
-    padding: var(--space-lg) var(--space-md);
-    border-right: 1px solid var(--color-gray-800);
-  }
-  .number-item:last-child { border-right: none; }
-  .number-eyebrow {
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-gray-600);
-    margin-bottom: var(--space-sm);
-  }
-  .number-value {
-    font-family: var(--font-en);
-    font-size: clamp(48px, 5vw, 72px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--color-white);
-    margin-bottom: var(--space-xs);
-  }
-  .number-unit {
-    font-family: var(--font-en);
-    font-size: 20px;
-    color: var(--color-accent);
-  }
-  .number-label {
-    font-family: var(--font-ja);
-    font-size: var(--text-caption);
-    color: var(--color-gray-400);
-    margin-bottom: var(--space-sm);
-  }
-  .number-desc {
-    font-size: 13px;
-    color: var(--color-gray-600);
-    line-height: 1.7;
-    max-width: 220px;
-  }
-  .number-tags {
-    display: flex;
-    gap: var(--space-xs);
-    flex-wrap: wrap;
-    margin-top: var(--space-sm);
-  }
-  .tag {
-    padding: 4px 12px;
-    border: 1px solid var(--color-gray-800);
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--color-gray-600);
-  }
-
-  /* ==========================================
-     WORKS SECTION
-  ========================================== */
-  .works { background: var(--color-black); }
-  .section-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: var(--space-xl);
-  }
-  .section-header-left { display: flex; flex-direction: column; gap: var(--space-xs); }
-  .view-all {
-    font-family: var(--font-en);
-    font-size: var(--text-caption);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-gray-400);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--color-gray-800);
-    padding-bottom: 4px;
-    transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
-  }
-  .view-all:hover { color: var(--color-white); border-color: var(--color-gray-400); }
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 2px;
-  }
-  .work-item {
-    position: relative;
-    overflow: hidden;
-    background: var(--color-gray-800);
-    cursor: pointer;
-  }
-  .work-item:nth-child(1) { grid-column: span 8; }
-  .work-item:nth-child(2) { grid-column: span 4; }
-  .work-item:nth-child(3) { grid-column: span 4; }
-  .work-item:nth-child(4) { grid-column: span 4; }
-  .work-item:nth-child(5) { grid-column: span 4; }
-  .work-photo {
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: var(--color-gray-800);
-    position: relative;
-    overflow: hidden;
-  }
-  .work-item:nth-child(1) .work-photo { aspect-ratio: 16/9; }
-  .work-photo::after {
-    content: '[ 物件写真 ]';
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-en);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--color-gray-600);
-  }
-  .work-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 60%);
-    padding: var(--space-sm);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-  .work-number {
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--color-gray-600);
-    margin-bottom: 4px;
-  }
-  .work-type {
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 4px;
-  }
-  .work-name {
-    font-family: var(--font-ja);
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--color-white);
-  }
-  .work-location {
-    font-family: var(--font-en);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--color-gray-400);
-    margin-top: 2px;
-  }
-
-  /* ==========================================
-     SERVICE SECTION
-  ========================================== */
-  .service { background: var(--color-off-white); color: var(--color-black); }
-  .service .t-eyebrow { color: var(--color-gray-600); }
-  .service .t-h2-ja { color: var(--color-black); }
-  .service-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: var(--space-xl);
-  }
-  .service-item {
-    background: var(--color-white);
-    padding: var(--space-lg) var(--space-md);
-    position: relative;
-    overflow: hidden;
-  }
-  .service-num {
-    font-family: var(--font-en);
-    font-size: clamp(64px, 8vw, 96px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    color: var(--color-gray-100);
-    margin-bottom: var(--space-md);
-  }
-  .service-category {
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-accent-dark);
-    margin-bottom: var(--space-xs);
-  }
-  .service-title {
-    font-family: var(--font-ja);
-    font-size: var(--text-h3);
-    font-weight: 500;
-    color: var(--color-black);
-    margin-bottom: var(--space-sm);
-  }
-  .service-desc {
-    font-size: var(--text-body);
-    color: var(--color-gray-600);
-    line-height: 1.8;
-    margin-bottom: var(--space-md);
-  }
-  .service-link {
-    font-family: var(--font-en);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--color-black);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--color-gray-200);
-    padding-bottom: 4px;
-    width: fit-content;
-  }
-
-  /* ==========================================
-     TRUSTED BY LOGOS
-  ========================================== */
-  .trusted {
-    padding: var(--space-lg) 0;
-    border-top: 1px solid var(--color-gray-800);
-    border-bottom: 1px solid var(--color-gray-800);
-  }
-  .trusted-inner {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xl);
-  }
-  .trusted-label {
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-gray-600);
-    white-space: nowrap;
-  }
-  .trusted-logos {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xl);
-    flex-wrap: wrap;
-  }
-  .logo-placeholder {
-    width: 120px;
-    height: 36px;
-    background: var(--color-gray-800);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--color-gray-600);
-    opacity: 0.6;
-  }
-
-  /* ==========================================
-     CONTACT SECTION
-  ========================================== */
-  .contact {
-    background: var(--color-off-white);
-    color: var(--color-black);
-    text-align: center;
-  }
-  .contact-headline {
-    font-family: var(--font-ja);
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 500;
-    line-height: 1.35;
-    margin-bottom: var(--space-md);
-  }
-  .contact-sub {
-    font-size: var(--text-body);
-    color: var(--color-gray-600);
-    margin-bottom: var(--space-xl);
-  }
-  .contact-cta {
-    display: flex;
-    gap: var(--space-sm);
-    justify-content: center;
-    align-items: center;
-    margin-bottom: var(--space-lg);
-  }
-  .btn-primary-dark {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 48px;
-    background: var(--color-black);
-    color: var(--color-white);
-    font-family: var(--font-en);
-    font-size: var(--text-label);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-  .contact-tel {
-    font-family: var(--font-en);
-    font-size: 28px;
-    font-weight: 300;
-    letter-spacing: 0.08em;
-    color: var(--color-black);
-  }
-  .contact-tel-label {
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-gray-600);
-    margin-bottom: 8px;
-  }
-
-  /* ==========================================
-     FOOTER
-  ========================================== */
-  .footer {
-    background: var(--color-black);
-    padding: var(--space-xl) 0 var(--space-md);
-    border-top: 1px solid var(--color-gray-800);
-  }
-  .footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: var(--space-lg);
-    margin-bottom: var(--space-md);
-    border-bottom: 1px solid var(--color-gray-800);
-  }
-  .footer-logo {
-    font-family: var(--font-en);
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: var(--color-white);
-    margin-bottom: var(--space-sm);
-  }
-  .footer-address {
-    font-size: 13px;
-    color: var(--color-gray-600);
-    line-height: 1.9;
-  }
-  .footer-nav {
-    display: flex;
-    gap: var(--space-md);
-    list-style: none;
-  }
-  .footer-nav a {
-    font-family: var(--font-en);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-gray-600);
-  }
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-copy {
-    font-family: var(--font-en);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--color-gray-800);
-  }
-</style>
-
-<!-- Google Fonts (Figma import時は別途フォント設定) -->
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -691,66 +20,121 @@
 ========================================== -->
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo">PHOTOSIA</a>
+
   <ul class="nav-links">
     <li><a href="#works">WORKS</a></li>
     <li><a href="#service">SERVICE</a></li>
-    <li><a href="#plan">PLAN</a></li>
-    <li><a href="#flow">FLOW</a></li>
-    <li><a href="#qa">Q&A</a></li>
-    <li><a href="#contact">CONTACT</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#contact" class="nav-cta">CONTACT</a></li>
   </ul>
+
+  <!-- ハンバーガー (SP) -->
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<!-- SP フルスクリーンメニュー -->
+<div class="sp-nav" id="spNav">
+  <a href="#works">WORKS</a>
+  <a href="#service">SERVICE</a>
+  <a href="#about">ABOUT</a>
+  <a href="#contact">CONTACT</a>
+</div>
+
 <!-- ==========================================
-     HERO SECTION
+     HERO — スライドショー
 ========================================== -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-bg-photo"></div>
-  
+
+  <div class="hero-slides">
+    <!-- Unsplash: 不動産・インテリア系写真 -->
+    <div class="hero-slide active">
+      <img
+        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&auto=format&fit=crop&q=80"
+        alt="高級マンション外観"
+        loading="eager"
+      >
+    </div>
+    <div class="hero-slide">
+      <img
+        src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&auto=format&fit=crop&q=80"
+        alt="モダンリビングルーム"
+        loading="lazy"
+      >
+    </div>
+    <div class="hero-slide">
+      <img
+        src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&auto=format&fit=crop&q=80"
+        alt="高層マンション外観夜景"
+        loading="lazy"
+      >
+    </div>
+    <div class="hero-slide">
+      <img
+        src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600&auto=format&fit=crop&q=80"
+        alt="キッチンインテリア"
+        loading="lazy"
+      >
+    </div>
+  </div>
+
+  <div class="hero-overlay"></div>
+
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
       <span class="t-eyebrow">REAL ESTATE PHOTOGRAPHY — TOKYO</span>
     </div>
-    
+
     <h1 class="hero-headline">
       物件の価値を、<br>
       <em>光と構図</em>で引き出す。
     </h1>
-    
+
     <p class="hero-sub">
-      不動産会社・管理会社のための、<br>プロフェッショナル物件撮影サービス。
+      不動産会社・管理会社のための、<br>
+      プロフェッショナル物件撮影サービス。
     </p>
-    
+
     <div class="hero-cta">
       <a href="#works" class="btn-primary">
         VIEW WORKS
-        <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
           <path d="M9 1L13 5L9 9M1 5H13" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
         </svg>
       </a>
       <a href="#contact" class="btn-ghost">CONTACT</a>
     </div>
   </div>
-  
-  <div class="hero-scroll">
-    <span class="hero-scroll-text">SCROLL</span>
-    <div class="hero-scroll-line"></div>
+
+  <!-- スライド切り替えインジケーター -->
+  <div class="hero-indicators">
+    <button class="indicator active" data-idx="0" aria-label="スライド1"></button>
+    <button class="indicator" data-idx="1" aria-label="スライド2"></button>
+    <button class="indicator" data-idx="2" aria-label="スライド3"></button>
+    <button class="indicator" data-idx="3" aria-label="スライド4"></button>
   </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+
 </section>
 
 <!-- ==========================================
      NUMBERS / STATS
 ========================================== -->
-<section class="numbers" id="numbers">
+<section class="numbers" id="about">
   <div class="container">
     <div class="numbers-grid">
 
-      <div class="number-item">
+      <div class="number-item"
+           data-target="1200" data-duration="1400" data-delay="0">
         <p class="number-eyebrow">ROOMS / YEAR</p>
         <div style="display:flex;align-items:baseline;gap:4px;">
-          <span class="number-value">1,200</span>
+          <span class="number-value" data-count>1,200</span>
           <span class="number-unit">+</span>
         </div>
         <p class="number-label">年間撮影部屋数</p>
@@ -761,10 +145,11 @@
         </div>
       </div>
 
-      <div class="number-item">
+      <div class="number-item"
+           data-target="10" data-duration="1000" data-delay="100">
         <p class="number-eyebrow">YEARS EXPERIENCE</p>
         <div style="display:flex;align-items:baseline;gap:4px;">
-          <span class="number-value">10</span>
+          <span class="number-value" data-count>10</span>
           <span class="number-unit">年</span>
         </div>
         <p class="number-label">不動産撮影の実績</p>
@@ -775,10 +160,11 @@
         </div>
       </div>
 
-      <div class="number-item">
+      <div class="number-item"
+           data-target="3" data-duration="800" data-delay="200">
         <p class="number-eyebrow">SERVICES</p>
         <div style="display:flex;align-items:baseline;gap:4px;">
-          <span class="number-value">3</span>
+          <span class="number-value" data-count>3</span>
           <span class="number-unit">種類</span>
         </div>
         <p class="number-label">撮影サービス</p>
@@ -790,10 +176,11 @@
         </div>
       </div>
 
-      <div class="number-item">
+      <div class="number-item"
+           data-target="48" data-duration="1000" data-delay="300">
         <p class="number-eyebrow">FASTEST DELIVERY</p>
         <div style="display:flex;align-items:baseline;gap:4px;">
-          <span class="number-value">48</span>
+          <span class="number-value" data-count>48</span>
           <span class="number-unit">h</span>
         </div>
         <p class="number-label">最短納品スピード</p>
@@ -810,7 +197,7 @@
 </section>
 
 <!-- ==========================================
-     WORKS SECTION
+     WORKS
 ========================================== -->
 <section class="works section" id="works">
   <div class="container">
@@ -822,66 +209,94 @@
       <a href="#" class="view-all">VIEW ALL WORKS →</a>
     </div>
   </div>
-  
-  <div style="padding: 0 var(--space-lg);">
-    <div class="works-grid">
 
-      <div class="work-item" style="grid-column: span 8;">
-        <div class="work-photo"></div>
-        <div class="work-overlay">
-          <p class="work-number">01</p>
-          <p class="work-type">APARTMENT</p>
-          <p class="work-name">カスタリア高輪</p>
-          <p class="work-location">東京都港区</p>
-        </div>
+  <div class="works-grid">
+
+    <div class="work-item">
+      <div class="work-photo">
+        <img
+          src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&auto=format&fit=crop&q=75"
+          alt="カスタリア高輪"
+          loading="lazy"
+        >
       </div>
-
-      <div class="work-item" style="grid-column: span 4;">
-        <div class="work-photo"></div>
-        <div class="work-overlay">
-          <p class="work-number">02</p>
-          <p class="work-type">HOTEL</p>
-          <p class="work-name">ホテルエミシア札幌</p>
-          <p class="work-location">北海道札幌市</p>
-        </div>
+      <div class="work-overlay">
+        <p class="work-number">01</p>
+        <p class="work-type">APARTMENT</p>
+        <p class="work-name">カスタリア高輪</p>
+        <p class="work-location">東京都港区</p>
       </div>
-
-      <div class="work-item" style="grid-column: span 4;">
-        <div class="work-photo"></div>
-        <div class="work-overlay">
-          <p class="work-number">03</p>
-          <p class="work-type">APARTMENT</p>
-          <p class="work-name">千代田区マンション</p>
-          <p class="work-location">東京都千代田区</p>
-        </div>
-      </div>
-
-      <div class="work-item" style="grid-column: span 4;">
-        <div class="work-photo"></div>
-        <div class="work-overlay">
-          <p class="work-number">04</p>
-          <p class="work-type">APARTMENT</p>
-          <p class="work-name">カスタリア西麻布霞町</p>
-          <p class="work-location">東京都港区</p>
-        </div>
-      </div>
-
-      <div class="work-item" style="grid-column: span 4;">
-        <div class="work-photo"></div>
-        <div class="work-overlay">
-          <p class="work-number">05</p>
-          <p class="work-type">APARTMENT</p>
-          <p class="work-name">KDXレジデンス自由が丘</p>
-          <p class="work-location">東京都目黒区</p>
-        </div>
-      </div>
-
     </div>
+
+    <div class="work-item">
+      <div class="work-photo">
+        <img
+          src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&auto=format&fit=crop&q=75"
+          alt="ホテルエミシア札幌"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-overlay">
+        <p class="work-number">02</p>
+        <p class="work-type">HOTEL</p>
+        <p class="work-name">ホテルエミシア札幌</p>
+        <p class="work-location">北海道札幌市</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-photo">
+        <img
+          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&auto=format&fit=crop&q=75"
+          alt="千代田区マンション"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-overlay">
+        <p class="work-number">03</p>
+        <p class="work-type">APARTMENT</p>
+        <p class="work-name">千代田区マンション</p>
+        <p class="work-location">東京都千代田区</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-photo">
+        <img
+          src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&auto=format&fit=crop&q=75"
+          alt="カスタリア西麻布霞町"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-overlay">
+        <p class="work-number">04</p>
+        <p class="work-type">APARTMENT</p>
+        <p class="work-name">カスタリア西麻布霞町</p>
+        <p class="work-location">東京都港区</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-photo">
+        <img
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&auto=format&fit=crop&q=75"
+          alt="KDXレジデンス自由が丘"
+          loading="lazy"
+        >
+      </div>
+      <div class="work-overlay">
+        <p class="work-number">05</p>
+        <p class="work-type">APARTMENT</p>
+        <p class="work-name">KDXレジデンス自由が丘</p>
+        <p class="work-location">東京都目黒区</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- ==========================================
-     SERVICE SECTION
+     SERVICE
 ========================================== -->
 <section class="service section" id="service">
   <div class="container">
@@ -891,10 +306,10 @@
         <h2 class="t-h2-ja">撮影サービス</h2>
       </div>
     </div>
-    <p style="font-size:var(--text-body);color:var(--color-gray-600);max-width:480px;margin-bottom:0;">
+    <p style="font-size:var(--text-body);color:var(--color-gray-600);max-width:480px;">
       物件の魅力を最大限に引き出す、3つのプロフェッショナルサービス。
     </p>
-    
+
     <div class="service-grid">
 
       <div class="service-item">
@@ -902,7 +317,7 @@
         <p class="service-category">PHOTOGRAPHY</p>
         <h3 class="service-title">写真撮影</h3>
         <p class="service-desc">室内・外観・共用部まで、プロフェッショナルの視点で丁寧に撮影。マンション、戸建て、店舗、ホテルまで幅広く対応します。</p>
-        <a href="#" class="service-link">詳しく見る →</a>
+        <a href="#contact" class="service-link">詳しく見る →</a>
       </div>
 
       <div class="service-item">
@@ -910,7 +325,7 @@
         <p class="service-category">PANORAMA</p>
         <h3 class="service-title">360°パノラマ撮影</h3>
         <p class="service-desc">物件の空間をすべて見せる360°パノラマ。バーチャル内覧が可能になり、遠方のお客様への訴求力が大幅に向上します。</p>
-        <a href="#" class="service-link">詳しく見る →</a>
+        <a href="#contact" class="service-link">詳しく見る →</a>
       </div>
 
       <div class="service-item">
@@ -918,7 +333,7 @@
         <p class="service-category">VIDEO</p>
         <h3 class="service-title">動画撮影</h3>
         <p class="service-desc">物件の魅力をストーリーで伝える動画制作。ウォークスルー動画からドローン空撮まで、ニーズに合わせて対応します。</p>
-        <a href="#" class="service-link">詳しく見る →</a>
+        <a href="#contact" class="service-link">詳しく見る →</a>
       </div>
 
     </div>
@@ -943,7 +358,7 @@
 </section>
 
 <!-- ==========================================
-     CONTACT SECTION
+     CONTACT
 ========================================== -->
 <section class="contact section" id="contact">
   <div class="container">
@@ -952,16 +367,16 @@
       まずは、お気軽に<br>ご相談ください。
     </h2>
     <p class="contact-sub">撮影のご依頼・お見積もり・ご質問、何でもお気軽にどうぞ。</p>
-    
+
     <div class="contact-cta">
       <a href="mailto:info@photosia.jp" class="btn-primary-dark">
         お問い合わせフォーム
-        <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
           <path d="M9 1L13 5L9 9M1 5H13" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
         </svg>
       </a>
     </div>
-    
+
     <div>
       <p class="contact-tel-label">TEL</p>
       <a href="tel:0354135010" class="contact-tel">03-5413-5010</a>
@@ -985,16 +400,19 @@
       <ul class="footer-nav">
         <li><a href="#works">WORKS</a></li>
         <li><a href="#service">SERVICE</a></li>
+        <li><a href="#about">ABOUT</a></li>
         <li><a href="#contact">CONTACT</a></li>
-        <li><a href="#">ABOUT</a></li>
         <li><a href="#">PRIVACY POLICY</a></li>
       </ul>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 PHOTOSIA / Shibuya Television Inc. 物件撮影サービス — TOKYO</p>
+      <p class="footer-copy">© 2026 PHOTOSIA / Shibuya Television Inc.</p>
+      <p class="footer-copy">物件撮影サービス — TOKYO</p>
     </div>
   </div>
 </footer>
 
+<!-- Scripts -->
+<script src="js/main.js"></script>
 </body>
 </html>
