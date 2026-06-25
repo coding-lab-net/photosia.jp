@@ -444,37 +444,37 @@ a { color: inherit; text-decoration: none; }
 .works { background: var(--color-black); }
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 2px;
   padding: 0 var(--space-lg);
 }
+/* 1行目: 2列（各3/6） */
+.work-item--half  { grid-column: span 3; }
+/* 2行目: 3列（各2/6） */
+.work-item--third { grid-column: span 2; }
+
 .work-item {
   position: relative;
   overflow: hidden;
   background: var(--color-gray-800);
   cursor: pointer;
 }
-.work-item:nth-child(1) { grid-column: span 8; }
-.work-item:nth-child(2) { grid-column: span 4; }
-.work-item:nth-child(3) { grid-column: span 4; }
-.work-item:nth-child(4) { grid-column: span 4; }
-.work-item:nth-child(5) { grid-column: span 4; }
 .work-photo {
+  position: relative;
   width: 100%;
-  aspect-ratio: 4/3;
+  padding-top: 56.25%; /* 16:9 全件統一 */
   overflow: hidden;
 }
-.work-item:nth-child(1) .work-photo { aspect-ratio: 16/9; }
+
+
 .work-photo img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
   transition: transform 0.8s var(--ease);
-}
-/* ホテルエミシア（span4・2番目）: 3:2画像を4:3セルに収めるため上寄せトリミング */
-.work-item:nth-child(2) .work-photo img {
-  object-position: center top;
 }
 .work-item:hover .work-photo img { transform: scale(1.04); }
 .work-overlay {
@@ -517,12 +517,8 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 900px) {
   .works-grid { padding: 0 var(--space-sm); grid-template-columns: 1fr 1fr; }
-  .work-item:nth-child(1),
-  .work-item:nth-child(2),
-  .work-item:nth-child(3),
-  .work-item:nth-child(4),
-  .work-item:nth-child(5) { grid-column: span 1; }
-  .work-item:nth-child(1) .work-photo { aspect-ratio: 4/3; }
+  .work-item--half  { grid-column: span 1; }
+  .work-item--third { grid-column: span 1; }
 }
 
 /* ==========================================
