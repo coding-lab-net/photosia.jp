@@ -43,44 +43,18 @@
 </div>
 
 <!-- ==========================================
-     HERO — 動画KV + 静止画スライド
+     HERO — 動画KV
 ========================================== -->
 <section class="hero">
 
-  <div class="hero-slides">
-    <!-- KV: photosia.jp 公式動画をループ再生 -->
-    <div class="hero-slide active hero-slide--video">
-      <video
-        autoplay muted loop playsinline
-        poster="https://www.photosia.jp/wp-content/uploads/2018/06/外観共用_01-1024x683.jpg"
-        aria-hidden="true"
-      >
-        <source src="https://www.photosia.jp/wp-content/themes/photosia_1.0.0/assets/video/top.mp4" type="video/mp4">
-      </video>
-    </div>
-    <!-- 静止画スライド: 実物件写真 -->
-    <div class="hero-slide">
-      <img
-        src="https://www.photosia.jp/wp-content/uploads/2018/06/外観共用_01-1024x683.jpg"
-        alt="カスタリア高輪 外観"
-        loading="lazy"
-      >
-    </div>
-    <div class="hero-slide">
-      <img
-        src="https://www.photosia.jp/wp-content/uploads/2017/09/カスタリア西麻布霞町1-1024x683.jpg"
-        alt="カスタリア西麻布霞町"
-        loading="lazy"
-      >
-    </div>
-    <div class="hero-slide">
-      <img
-        src="https://www.photosia.jp/wp-content/uploads/2016/08/ROBBY_7-1024x683.jpg"
-        alt="千代田区マンション"
-        loading="lazy"
-      >
-    </div>
-  </div>
+  <!-- 動画KV -->
+  <video
+    class="hero-video"
+    autoplay muted loop playsinline
+    aria-hidden="true"
+  >
+    <source src="https://www.photosia.jp/wp-content/themes/photosia_1.0.0/assets/video/top.mp4" type="video/mp4">
+  </video>
 
   <div class="hero-overlay"></div>
 
@@ -109,14 +83,6 @@
       </a>
       <a href="#contact" class="btn-ghost">CONTACT</a>
     </div>
-  </div>
-
-  <!-- スライド切り替えインジケーター -->
-  <div class="hero-indicators">
-    <button class="indicator active" data-idx="0" aria-label="スライド1（動画）"></button>
-    <button class="indicator" data-idx="1" aria-label="スライド2"></button>
-    <button class="indicator" data-idx="2" aria-label="スライド3"></button>
-    <button class="indicator" data-idx="3" aria-label="スライド4"></button>
   </div>
 
   <div class="scroll-hint" aria-hidden="true">

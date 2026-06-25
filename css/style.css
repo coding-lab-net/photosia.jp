@@ -227,21 +227,8 @@ a { color: inherit; text-decoration: none; }
   align-items: flex-end;
 }
 
-/* Slideshow */
-.hero-slides { position: absolute; inset: 0; }
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1.4s ease;
-}
-.hero-slide.active { opacity: 1; }
-.hero-slide img { width: 100%; height: 100%; object-fit: cover; }
-
-.hero-slide img { width: 100%; height: 100%; object-fit: cover; }
-
-/* 動画KVスライド */
-.hero-slide--video video {
+/* 動画KV */
+.hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -301,60 +288,9 @@ a { color: inherit; text-decoration: none; }
   flex-wrap: wrap;
 }
 
-/* Slide indicators */
-.hero-indicators {
-  position: absolute;
-  right: var(--space-lg);
-  bottom: var(--space-xl);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 2;
-}
-.indicator {
-  width: 1.5px;
-  height: 24px;
-  background: var(--color-gray-800);
-  cursor: pointer;
-  transition: background 0.3s, height 0.3s;
-  border: none;
-  padding: 0;
-}
-.indicator.active { background: var(--color-accent); height: 36px; }
-
-/* Scroll hint */
-.scroll-hint {
-  position: absolute;
-  bottom: var(--space-sm);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0.45;
-  z-index: 2;
-}
-.scroll-hint span {
-  font-family: var(--font-sans);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  color: var(--color-gray-400);
-}
-.scroll-line {
-  width: 0.5px;
-  height: 36px;
-  background: var(--color-gray-400);
-  animation: scrollAnim 2s ease-in-out infinite;
-}
-@keyframes scrollAnim {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
 
 @media (max-width: 768px) {
   .hero-content { padding: 0 var(--space-sm) var(--space-lg); }
-  .hero-indicators { right: var(--space-sm); bottom: var(--space-lg); }
 }
 
 /* ==========================================
@@ -530,7 +466,15 @@ a { color: inherit; text-decoration: none; }
 }
 .work-item:nth-child(1) .work-photo { aspect-ratio: 16/9; }
 .work-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
   transition: transform 0.8s var(--ease);
+}
+/* ホテルエミシア（span4・2番目）: 3:2画像を4:3セルに収めるため上寄せトリミング */
+.work-item:nth-child(2) .work-photo img {
+  object-position: center top;
 }
 .work-item:hover .work-photo img { transform: scale(1.04); }
 .work-overlay {

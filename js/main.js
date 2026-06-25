@@ -28,32 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   spNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
-  /* ── HERO SLIDER ── */
-  const slides     = document.querySelectorAll('.hero-slide');
-  const indicators = document.querySelectorAll('.indicator');
-  let current      = 0;
-  let autoTimer;
-
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    indicators[current].classList.remove('active');
-    current = (n + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    indicators[current].classList.add('active');
-  }
-
-  function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(() => goTo(current + 1), 4800);
-  }
-
-  indicators.forEach((el, i) => {
-    el.addEventListener('click', () => { goTo(i); startAuto(); });
-  });
-
-  goTo(0);
-  startAuto();
-
   /* ── COUNT UP ── */
   function easeOutExpo(t) {
     return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
