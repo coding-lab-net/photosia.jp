@@ -43,37 +43,40 @@
 </div>
 
 <!-- ==========================================
-     HERO — スライドショー
+     HERO — 動画KV + 静止画スライド
 ========================================== -->
 <section class="hero">
 
   <div class="hero-slides">
-    <!-- Unsplash: 不動産・インテリア系写真 -->
-    <div class="hero-slide active">
-      <img
-        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&auto=format&fit=crop&q=80"
-        alt="高級マンション外観"
-        loading="eager"
+    <!-- KV: photosia.jp 公式動画をループ再生 -->
+    <div class="hero-slide active hero-slide--video">
+      <video
+        autoplay muted loop playsinline
+        poster="https://www.photosia.jp/wp-content/uploads/2018/06/外観共用_01-1024x683.jpg"
+        aria-hidden="true"
       >
+        <source src="https://www.photosia.jp/wp-content/themes/photosia_1.0.0/assets/video/top.mp4" type="video/mp4">
+      </video>
     </div>
+    <!-- 静止画スライド: 実物件写真 -->
     <div class="hero-slide">
       <img
-        src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&auto=format&fit=crop&q=80"
-        alt="モダンリビングルーム"
+        src="https://www.photosia.jp/wp-content/uploads/2018/06/外観共用_01-1024x683.jpg"
+        alt="カスタリア高輪 外観"
         loading="lazy"
       >
     </div>
     <div class="hero-slide">
       <img
-        src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&auto=format&fit=crop&q=80"
-        alt="高層マンション外観夜景"
+        src="https://www.photosia.jp/wp-content/uploads/2017/09/カスタリア西麻布霞町1-1024x683.jpg"
+        alt="カスタリア西麻布霞町"
         loading="lazy"
       >
     </div>
     <div class="hero-slide">
       <img
-        src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600&auto=format&fit=crop&q=80"
-        alt="キッチンインテリア"
+        src="https://www.photosia.jp/wp-content/uploads/2016/08/ROBBY_7-1024x683.jpg"
+        alt="千代田区マンション"
         loading="lazy"
       >
     </div>
@@ -110,7 +113,7 @@
 
   <!-- スライド切り替えインジケーター -->
   <div class="hero-indicators">
-    <button class="indicator active" data-idx="0" aria-label="スライド1"></button>
+    <button class="indicator active" data-idx="0" aria-label="スライド1（動画）"></button>
     <button class="indicator" data-idx="1" aria-label="スライド2"></button>
     <button class="indicator" data-idx="2" aria-label="スライド3"></button>
     <button class="indicator" data-idx="3" aria-label="スライド4"></button>
@@ -131,10 +134,10 @@
     <div class="numbers-grid">
 
       <div class="number-item"
-           data-target="1200" data-duration="1400" data-delay="0">
+           data-target="5000" data-duration="1600" data-delay="0">
         <p class="number-eyebrow">ROOMS / YEAR</p>
         <div style="display:flex;align-items:baseline;gap:4px;">
-          <span class="number-value" data-count>1,200</span>
+          <span class="number-value" data-count>5,000</span>
           <span class="number-unit">+</span>
         </div>
         <p class="number-label">年間撮影部屋数</p>
@@ -215,7 +218,7 @@
     <div class="work-item">
       <div class="work-photo">
         <img
-          src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&auto=format&fit=crop&q=75"
+          src="https://www.photosia.jp/wp-content/uploads/2018/06/外観共用_01-1024x683.jpg"
           alt="カスタリア高輪"
           loading="lazy"
         >
@@ -231,7 +234,7 @@
     <div class="work-item">
       <div class="work-photo">
         <img
-          src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&auto=format&fit=crop&q=75"
+          src="https://www.photosia.jp/wp-content/uploads/2016/03/01-1024x683.jpg"
           alt="ホテルエミシア札幌"
           loading="lazy"
         >
@@ -247,7 +250,7 @@
     <div class="work-item">
       <div class="work-photo">
         <img
-          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&auto=format&fit=crop&q=75"
+          src="https://www.photosia.jp/wp-content/uploads/2016/08/ROBBY_7-1024x683.jpg"
           alt="千代田区マンション"
           loading="lazy"
         >
@@ -263,7 +266,7 @@
     <div class="work-item">
       <div class="work-photo">
         <img
-          src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&auto=format&fit=crop&q=75"
+          src="https://www.photosia.jp/wp-content/uploads/2017/09/カスタリア西麻布霞町1-1024x683.jpg"
           alt="カスタリア西麻布霞町"
           loading="lazy"
         >
@@ -279,7 +282,7 @@
     <div class="work-item">
       <div class="work-photo">
         <img
-          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&auto=format&fit=crop&q=75"
+          src="https://www.photosia.jp/wp-content/uploads/2016/04/2-1024x684.jpg"
           alt="KDXレジデンス自由が丘"
           loading="lazy"
         >
@@ -348,10 +351,21 @@
     <div class="trusted-inner">
       <span class="trusted-label">TRUSTED BY</span>
       <div class="trusted-logos">
-        <div class="logo-placeholder">ケン・コーポレーション</div>
-        <div class="logo-placeholder">ケンリース</div>
-        <div class="logo-placeholder">森トラスト</div>
-        <div class="logo-placeholder">トーケン</div>
+        <div class="logo-placeholder">
+          <img src="https://www.photosia.jp/wp-content/themes/photosia_1.0.0/assets/img/ken.jpg" alt="ケン・コーポレーション">
+        </div>
+        <div class="logo-placeholder">
+          <img src="https://www.photosia.jp/wp-content/themes/photosia_1.0.0/assets/img/ken_lease.jpg" alt="ケンリース">
+        </div>
+        <div class="logo-placeholder">
+          <img src="https://www.photosia.jp/wp-content/themes/photosia_1.0.0/assets/img/ken_ra.jpg" alt="ケンRA">
+        </div>
+        <div class="logo-placeholder">
+          <img src="https://www.photosia.jp/wp-content/themes/photosia_1.0.0/assets/img/mori.jpg" alt="森トラスト">
+        </div>
+        <div class="logo-placeholder">
+          <img src="https://www.photosia.jp/wp-content/themes/photosia_1.0.0/assets/img/token.png" alt="トーケン">
+        </div>
       </div>
     </div>
   </div>

@@ -238,6 +238,17 @@ a { color: inherit; text-decoration: none; }
 .hero-slide.active { opacity: 1; }
 .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
 
+.hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 動画KVスライド */
+.hero-slide--video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
